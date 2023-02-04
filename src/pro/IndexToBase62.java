@@ -15,8 +15,9 @@ public class IndexToBase62 {
 		// service
 		// repository <-> service
 		int id = insertUrl(inputUrl);
+
 		String encodedUrl = idToEncodedUrl(id);
-		updateUrl(id, encodedUrl);
+//		updateUrl(id, encodedUrl);
 
 		// return encodedUrl;
 	}
@@ -24,7 +25,12 @@ public class IndexToBase62 {
 	private static String idToEncodedUrl(int id) {
 		// id = 123456789
 		// ==>
+		String s = "";
 
+		while ((id / 62) >= 1) {
+			s = (id % 62) + s;
+			id = id / 62;
+ 		}
 
 
 
@@ -47,4 +53,8 @@ public class IndexToBase62 {
 		Url url = list.get(index);
 		url.setEncodedUrl(encodedUrl);
 	}
+}
+
+class Encoder {
+
 }
